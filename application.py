@@ -2,18 +2,33 @@ import streamlit as st
 import os
 import numpy as np
 import cv2
+import gdown
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.applications.efficientnet import preprocess_input
 from PIL import Image
 
+# ==================== GOOGLE DRIVE MODEL LOADING ====================
+
+MODEL_PATH = "hierarchical_main_severity_model.keras"
+FILE_ID = "1hyA0U4B2ePaaHlj2rIns9HR2BhmqR3Cg"  # Your Google Drive Model File ID
+
+# Download model from Google Drive if not available locally
+if not os.path.exists(MODEL_PATH):
+    st.write("⬇️ Downloading model from Google Drive...")
+    url = f"https://drive.google.com/uc?id={FILE_ID}"
+    gdown.download(url, MODEL_PATH, quiet=False)
+    st.write("✅ Model downloaded successfully!")
+
+# Load the model
+st.write("⏳ Loading model... (This may take 20–30 seconds)")
+model = load_model(MODEL_PATH)
+st.write("🚀 Model loaded successfully!")
+
+
 # ==================== PATHS ====================
-MODEL_PATH = 'hierarchical_main_severity_model.keras'
 SAVE_DIR = 'smartpraja_uploaded'
 os.makedirs(SAVE_DIR, exist_ok=True)
-
-# Load model
-model = load_model(MODEL_PATH)
 
 # Classes
 main_classes = ['garbage', 'road', 'child']
@@ -135,8 +150,9 @@ st.write("Upload an image to detect garbage, road damage, or child-related issue
 uploaded_file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
-    # Save file
     save_path = os.path.join(SAVE_DIR, uploaded_file.name)
+
+    # Save file
     with open(save_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
