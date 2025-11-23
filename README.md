@@ -109,10 +109,10 @@ All images were resized to **224x224**, normalized, and augmented.
 # 📁 Project Structure
 SmartSeva/
 │
-├── application.py # Streamlit app
-├── requirements.txt # Dependencies
-├── README.md # Documentation
-├── smartpraja_uploaded/ # Auto-created folder for uploaded files
+├── application.py # Streamlit app/
+├── requirements.txt # Dependencies/
+├── README.md # Documentation/
+├── smartpraja_uploaded/ # Auto-created folder for uploaded files/
 └── hierarchical_main_severity_model.keras (downloaded automatically)
 
 ---
@@ -132,9 +132,4 @@ SmartSeva/
 
 ---
 
-# 💻 Installation
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/smartseva.git
-cd smartseva
