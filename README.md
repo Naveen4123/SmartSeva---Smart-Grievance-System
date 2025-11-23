@@ -1,5 +1,7 @@
 # 📢 SmartSeva AI – Smart Grievance Categorization System
 
+https://smartseva---smart-grievance-system-jmt3utagkcst3dmayqg9ik.streamlit.app/
+
 SmartSeva AI is a deep-learning powered image classification system designed to automatically detect and categorize public complaints such as **garbage issues, road damage, and child-related cases**.  
 Using a **hierarchical multi-task deep learning model**, SmartSeva predicts both:
 
