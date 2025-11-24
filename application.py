@@ -156,8 +156,8 @@ if uploaded_file:
 
     with open(save_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
-
-    st.image(Image.open(uploaded_file), caption="Uploaded Image", use_column_width=True)
+        
+    st.image(Image.open(uploaded_file), caption="Uploaded Image", width=350)
 
     if st.button("🔍 Analyze Image"):
         with st.spinner("Processing…"):
@@ -177,3 +177,4 @@ if uploaded_file:
 
             except Exception as e:
                 st.error(f"❌ Error: {e}")
+
