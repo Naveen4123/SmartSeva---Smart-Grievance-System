@@ -4,3 +4,5 @@ numpy
 pillow
 gdown
 tensorflow==2.20.0
+onnxruntime
+uuid
