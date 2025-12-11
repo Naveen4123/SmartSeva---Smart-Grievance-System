@@ -103,4 +103,14 @@ SmartSeva is an AI-driven grievance classification system designed to help users
 
 ---
 
- 
+ ## 👥 Team Members
+
+### 🧠 Data Science Team  
+- **NaveenKumarReddy Bapathi**  
+- **Anitha Sirigireddy**
+
+### 💻 Full Stack Team  
+- **Gautham**  
+- **Likitha**  
+- **Pavani**
+
