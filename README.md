@@ -1,126 +1,106 @@
-# 📢 SmartSeva AI – Smart Grievance Categorization System
+# 🚦 SmartSeva – AI-Powered Grievance Detection
 
-https://smartseva---smart-grievance-system-jmt3utagkcst3dmayqg9ik.streamlit.app/
-
-SmartSeva AI is a deep-learning powered image classification system designed to automatically detect and categorize public complaints such as **garbage issues, road damage, and child-related cases**.  
-Using a **hierarchical multi-task deep learning model**, SmartSeva predicts both:
-
-1️⃣ **Main Category**  
-2️⃣ **Severity Sub-Class**
-
-This helps authorities respond to complaints faster, more accurately, and with proper priority levels.
+SmartSeva is an AI-driven grievance classification system designed to help users report civic issues quickly and accurately. By simply uploading an image, the system predicts **Category** (Road / Garbage / Child Issue) and **Severity Level** (Low / High), giving a fast, automated assessment right on the user’s screen.
 
 ---
 
-# 🚀 Features
+## ✨ Features
 
-- 🧠 **AI-powered classification (EfficientNet Backbone)**
-- 🔥 **Two-head hierarchical multi-task model**
-- 🔽 **Auto-downloads `.keras` model from Google Drive**
-- ⚡ **Runs smoothly on Streamlit Cloud**
-- 👁️ **Real-time image analysis**
-- 📊 **Shows classes, confidence, severity, emergency level**
-- 🏛️ **Maps the complaint to the correct government department**
-- 🟢 **Lightweight model (<100MB) for fast deployment**
+- 🔍 **AI Image Classification** – Detects category of the issue from the uploaded image  
+- ⚠️ **Severity Prediction** – Estimates issue severity using a second dedicated AI model  
+- 📤 **Image Upload System** – Easy drag-and-drop or manual upload  
+- 🧠 **Smart Validation** – User verifies prediction (YES / NO) to improve accuracy  
+- ⚡ **Fast Inference** – ONNX-optimized models for speed  
+- 💡 **Clean UI** – Simple, user-friendly interface
 
 ---
 
-# 🧠 Model Architecture
-
-SmartSeva uses a **Hierarchical Multi-Task Learning (H-MTL)** structure.
-
-### 🔹 **Base Model**
-- **EfficientNetB0**
-- Image size: **224×224×3**
-- Weights: **ImageNet Pretrained**
-
-### 🔹 **Output Heads**
-#### 1. **Main Category (3 classes)**
-- garbage  
-- road  
-- child  
-
-#### 2. **Severity Classification (6 classes)**
-- low_garbage  
-- heavy_garbage  
-- low_damage_roads  
-- high_damage_roads  
-- normal_child  
-- child_labour  
-
-### 🔹 **Training Details**
-- Optimizer: **Adam (1e-4)**
-- Loss (multi-output):
-- Augmentations: flip, rotate, zoom, brightness
-- 10–20 epochs with EarlyStopping
+## 📂 Categories Predicted  
+- 🛣️ **Road Issue**  
+- 🗑️ **Garbage Issue**  
+- 👶 **Child Issue**
 
 ---
 
-# 🏷 Class Breakdown
-
-### **Main Classes (3)**
-
-| Class   | Meaning |
-|--------|---------|
-| garbage | Waste, dump yard, trash piles |
-| road | Road cracks, potholes, damage |
-| child | Normal child or child labour case |
+## 🔥 Severity Levels  
+- 🟩 **Low**  
+- 🟥 **High**
 
 ---
 
-### **Severity Sub-Classes (6)**
+## 🏗️ System Workflow
 
-| Sub-Class | Category | Meaning |
-|-----------|----------|---------|
-| low_garbage | Garbage | Small garbage |
-| heavy_garbage | Garbage | Heavy waste dumping |
-| low_damage_roads | Roads | Minor cracks |
-| high_damage_roads | Roads | Severe potholes / major damage |
-| normal_child | Child | Regular child image |
-| child_labour | Child | Possible child labour (alert) |
+1. User uploads an image  
+2. Model-1 predicts **Category**  
+3. Model-2 predicts **Severity**  
+4. Results displayed instantly  
+5. User confirms correctness  
+6. If incorrect → user re-uploads or tries again  
 
 ---
 
-# 🧰 Technologies Used
+## 📢 User Confirmation Message
 
-- Python  
-- TensorFlow 2.20  
-- Keras  
-- EfficientNet  
-- OpenCV  
-- Streamlit  
-- NumPy  
-- Pillow  
-- gdown (Google Drive model downloader)
+**"Here are the predicted category and severity for your uploaded image. If this looks correct, click YES. If not, click NO to re-upload or try again."**
 
 ---
 
-# 📂 Dataset (General Overview)
+## 🚀 Future Enhancements
 
-SmartSeva uses ~2,100 images collected from:
+- 🧩 **Add More Issue Categories**  
+  Expand beyond current three classes with additional datasets.
 
-- Google Images  
-- Manual collection  
-- Open datasets  
-- Field images  
+- 📊 **Dashboard & Analytics**  
+  Admin panel to view number of reports by location, type, severity.
 
-All images were resized to **224x224**, normalized, and augmented.
+- 🌐 **Location Auto-Detection**  
+  Use GPS or EXIF metadata to capture issue location.
+
+- 🗺️ **Heatmap of Issues**  
+  Visualize problem areas in real time.
+
+- 📝 **Text + Image Hybrid Feedback**  
+  Allow users to describe the issue along with the image.
+
+- 🤖 **Fine-Tuned Larger Models**  
+  Upgrading from lightweight CNNs to MobileViT / EfficientNet.
+
+- 🔄 **Active Learning Loop**  
+  User feedback used to retrain the model for higher accuracy.
+
+- 📱 **Mobile App Version**  
+  Android/iOS app for on-the-go reporting.
+
+- 🧾 **Auto-Generated Issue Summary**  
+  AI creates a formatted grievance message for government portals.
 
 ---
 
-# 🧪 How the App Works
+## 🛠️ Tech Stack
 
-1️⃣ User uploads an image  
-2️⃣ Image is resized and preprocessed using EfficientNet preprocess  
-3️⃣ Model performs two predictions:
-   - Main Category  
-   - Severity Class  
-4️⃣ SmartSeva maps outputs to:
-   - Emergency level (High/Medium/None)
-   - Government department
-   - Action feedback  
-5️⃣ Streamlit displays results in a clean UI
+- **Python** (Model Training)  
+- **TensorFlow / PyTorch**  
+- **ONNX Runtime** for fast inference  
+- **Flask / FastAPI** (Backend)  
+- **HTML / CSS / JS** (Frontend)  
+- **GitHub** (Version Control)
 
 ---
 
+## 🧪 Model Details
 
+### 🎯 Category Classification Model  
+- Input: Image (224×224)  
+- Output: 3 Classes → Road / Garbage / Child  
+- Architecture: Custom CNN / Lightweight Model  
+- Format: ONNX  
+
+### ⚠️ Severity Prediction Model  
+- Input: Image (224×224)  
+- Output: Low / High  
+- Architecture: Custom CNN  
+- Format: ONNX  
+
+---
+
+ 
